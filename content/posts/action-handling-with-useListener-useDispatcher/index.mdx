@@ -1,0 +1,120 @@
+---
+title: Imperative React Patterns I - Action Handling with useListener & useDispatcher
+date: 2023-07-01
+image: "./mj-1.png"
+imageAlt: Cozy image that i've created with MJ.
+imageCaptionText: FUCK
+---
+
+React is known for its powerful tools to manage state and facilitate communication between components. However, sometimes, you might find yourself needing a more dynamic, event-driven approach that isn't well-supported out of the box. In these cases, you can leverage some of the flexible aspects of React to create a custom solution.
+
+```jsx
+const { useDisaptcher, useListener } = createAction()
+
+const action = { name: "my_action", payload: {} }
+
+const SourceComponent = () => {
+  const { dispatch } = useDisaptcher()
+  const handleClick = () => {
+    dispatch(action)
+  }
+
+  return (
+    <button onClick={handleClick}>Source Button </button>
+  )
+}
+
+const TargetComponent = () => {
+  useListener(action => {
+    if (action.name === "my_action") {
+      // some imperative event here
+      notifyUser()
+    }
+  })
+  return <div></div>
+}
+```
+
+In this blog post, we're going to delve into a custom event system for React applications using hooks and context API, aimed at providing an event-driven architecture to your React application. We will introduce a function called `createAction` that generates an event system where you can add and remove listeners. Then, we'll discuss how to utilize this system within React components with the hooks useListener and useDispatcher.
+
+Following this, we will explore the createComponentEvent function, which extends our event system by using React's context API, allowing us to propagate our event system to a whole tree of React components. This not only facilitates dispatching and listening to events within a single component but also provides an efficient way to manage complex cross-component communication.
+
+Whether you're looking for a way to augment the communication capabilities within your React application or merely want to explore a new architectural approach, this blog post aims to provide a detailed and clear introduction to creating and managing a custom event system in React. So, without further ado, let's dive right in!
+
+```jsx
+export const createAction = () => {
+  const listeners = new Set()
+  const subscribe = listener => {
+    listeners.add(listener)
+    return () => listeners.delete(listener)
+  }
+
+  const useListener = fn => {
+    const listener = useRef({})
+    useEffect(() => {
+      listener.current.fn = fn
+    }, [fn])
+
+    useEffect(() => {
+      const unsubscribe = subscribe(listener.current)
+      return unsubscribe
+    }, [])
+  }
+
+  const useDispatcher = () => {
+    const caller = payload => {
+      listeners.forEach(l => l.fn(payload))
+    }
+    return caller
+  }
+
+  return { useDispatcher, useListener }
+}
+```
+
+Now lets define it by per component context, which will make it only avaliable within component's scope.
+
+```jsx
+export const createComponentAction = () => {
+  const context = createContext()
+  const useDispatcher = payload =>
+    useContext(context).useDispatcher(payload)
+  const useListener = fn =>
+    useContext(context).useListener(fn)
+  const EventProvider = ({ children }) => {
+    const createActionRef = useRef(createAction())
+
+    return (
+      <context.Provider value={createActionRef.current}>
+        {children}
+      </context.Provider>
+    )
+  }
+
+  const withAction = Component => props =>
+    (
+      <EventProvider>
+        <Component {...props} />
+      </EventProvider>
+    )
+
+  return {
+    useDispatcher,
+    useListener,
+    EventProvider,
+    withAction,
+  }
+}
+```
+
+so when you need to use, wrap the roof component with `withAction` HOC.
+
+*([Try it on Sandbox](https://codesandbox.io/s/uselistener-usedispatch-kfqtdf))*
+
+### When to Use
+
+It's actually best to avoid using this approach as much as possible. Extensive usage might make your code more complex and difficult to manage, which contradicts the intended purpose. Therefore, only use it when you see an opportunity to simplify things.
+
+- **No State Updates Required:** This approach is useful when you don't need to update any state with the action, as in the example shown above where we simply trigger notifyUser.
+
+- **Component-Specific State Logic:** Sometimes, a component manages its own state quite well in one place. However, there may come a time when you need to access or update part of a component's state. In this case, you have two options: you could elevate the component’s state to a higher component (a common practice known as "lifting state up"), or you could adopt this approach to avoid touching your state. By letting actions fly around, you can keep your state in one place. Be cautious, though! If you find yourself using this approach excessively, it may be a sign that you should consider lifting your state instead.
