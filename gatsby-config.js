@@ -16,6 +16,7 @@ module.exports = {
     ],
     siteUrl: "http://blog.kerematam.com",
   },
+  pathPrefix: "/",
   plugins: [
     {
       resolve: `gatsby-theme-blog`,
