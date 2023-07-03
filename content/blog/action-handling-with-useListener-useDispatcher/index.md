@@ -3,8 +3,9 @@ title: Imperative React Patterns I - Action Handling with useListener & useDispa
 date: 2023-07-01
 image: "./mj-1.png"
 imageAlt: Cozy image that i've created with MJ.
-imageCaptionText: FUCK
 ---
+
+![Cozy image that i've created with MJ.](./mj-1.png)
 
 React is known for its powerful tools to manage state and facilitate communication between components. However, sometimes, you might find yourself needing a more dynamic, event-driven approach that isn't well-supported out of the box. In these cases, you can leverage some of the flexible aspects of React to create a custom solution.
 
