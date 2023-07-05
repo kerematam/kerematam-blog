@@ -116,6 +116,8 @@ so when you need to use, wrap the roof component with `withAction` HOC.
 
 It's actually best to avoid using this approach as much as possible. Extensive usage might make your code more complex and difficult to manage, which contradicts the intended purpose. Therefore, only use it when you see an opportunity to simplify things.
 
-- **No State Updates Required:** This approach is useful when you don't need to update any state with the action, as in the example shown above where we simply trigger notifyUser.
+#### To Avoid Lifting State Up to Context
 
-- **Component-Specific State Logic:** Sometimes, a component manages its own state quite well in one place. However, there may come a time when you need to access or update part of a component's state. In this case, you have two options: you could elevate the component’s state to a higher component (a common practice known as "lifting state up"), or you could adopt this approach to avoid touching your state. By letting actions fly around, you can keep your state in one place. Be cautious, though! If you find yourself using this approach excessively, it may be a sign that you should consider lifting your state instead.
+Sometimes, a component can manage its own state quite effectively in one place. However, there may be instances when you need to update part of a component's state from a component, far far away. In this case, you can elevate the component’s state to a higher-level component (a common practice known as "lifting state up") or to a Context. But be warned: lifting state up is not without its costs. This practice can disperse your state management across multiple locations, and updating state within a Context can lead to performance issues if existing code does not have proper coverage with `useMemo`, `useCallback`, and `memo`. Therefore, this would be the appropriate time to evaluate the trade-offs between elevating the state to a Context and maintaining the current approach.
+
+Be cautious, though! If you find yourself using this approach excessively, it may be a sign that you should consider refactor your code and lifting your state.

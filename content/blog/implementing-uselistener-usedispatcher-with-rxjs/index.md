@@ -4,6 +4,7 @@ date: 2023-07-02
 image: "./mj-2.png"
 imageAlt: Cozy image that I've taken from MJ.
 ---
+![Cozy image that i've created with MJ.](./mj-2.png)
 
 As RxJS provides rich tooling for event-driven implementations, I've decided to give it a try by implementing the previous example of action handling hooks (`useListener` and `useDispatcher`):
 
