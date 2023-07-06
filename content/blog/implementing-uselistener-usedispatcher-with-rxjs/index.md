@@ -9,7 +9,7 @@ imageAlt: Cozy image that I've taken from MJ.
 As RxJS provides rich tooling for event-driven implementations, I've decided to give it a try by implementing the previous example of action handling hooks (`useListener` and `useDispatcher`):
 
 ```jsx
-export const createEvent = () => {
+export const createAction = () => {
   const subject = new Subject()
 
   const useListener = (callback, operator) => {
@@ -38,7 +38,7 @@ export const createComponentAction = () => {
   const useListener = (fn, operator) =>
     useContext(context).useListener(fn, operator)
   const EventProvider = ({ children }) => {
-    const createActionRef = useRef(createEvent())
+    const createActionRef = useRef(createAction())
 
     return (
       <context.Provider value={createActionRef.current}>
