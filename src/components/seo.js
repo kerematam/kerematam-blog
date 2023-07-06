@@ -14,6 +14,9 @@ const Seo = ({ description, title, children }) => {
       query {
         site {
           siteMetadata {
+            author {
+              username
+            }
             title
             description
             social {
@@ -38,7 +41,7 @@ const Seo = ({ description, title, children }) => {
       <meta name="twitter:card" content="summary" />
       <meta
         name="twitter:creator"
-        content={site.siteMetadata?.social?.twitter || ``}
+        content={`@${site.siteMetadata?.author?.username}` || ``}
       />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
