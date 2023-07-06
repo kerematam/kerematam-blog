@@ -13,6 +13,7 @@ module.exports = {
     title: `Kerem Atam's Tech Blog`,
     author: {
       name: `Kerem Atam`,
+      username: `kerematam`,
       summary: `Hi! I'am a developer based in Istanbul, TR. My current
       focus is on React, but I also have interests in DIY electronics and
       Blockchain Technologies.`,
@@ -27,6 +28,13 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ["G-2E9P1JK875"],
+        pluginConfig: { head: true },
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -81,14 +89,22 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
+            serialize: ({
+              query: { site, allMarkdownRemark },
+            }) => {
               return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+                  url:
+                    site.siteMetadata.siteUrl +
+                    node.fields.slug,
+                  guid:
+                    site.siteMetadata.siteUrl +
+                    node.fields.slug,
+                  custom_elements: [
+                    { "content:encoded": node.html },
+                  ],
                 })
               })
             },
@@ -119,10 +135,8 @@ module.exports = {
         name: `Kerem Atam's Tech Blog`,
         short_name: `Gatsby`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        background_color: `#232128`,
+        theme_color: `#232128`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
