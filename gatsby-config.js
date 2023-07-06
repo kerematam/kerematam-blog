@@ -27,6 +27,13 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ["G-2E9P1JK875"],
+        pluginConfig: { head: true },
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -81,14 +88,22 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
+            serialize: ({
+              query: { site, allMarkdownRemark },
+            }) => {
               return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+                  url:
+                    site.siteMetadata.siteUrl +
+                    node.fields.slug,
+                  guid:
+                    site.siteMetadata.siteUrl +
+                    node.fields.slug,
+                  custom_elements: [
+                    { "content:encoded": node.html },
+                  ],
                 })
               })
             },
