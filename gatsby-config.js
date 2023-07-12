@@ -10,7 +10,7 @@
 module.exports = {
   pathPrefix: "/",
   siteMetadata: {
-    title: `Kerem Atam's Tech Blog`,
+    title: `My Personal Tech Blog`,
     author: {
       name: `Kerem Atam`,
       username: `kerematam`,
@@ -138,7 +138,7 @@ module.exports = {
         background_color: `#232128`,
         theme_color: `#232128`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
     },
   ],
