@@ -76,3 +76,5 @@ const AComponentNestedDeepInDomTree = () => {
   return <div>nested</div>
 }
 ```
+
+*([Try it on Sandbox](https://codesandbox.io/s/uselistener-usedispatch-with-rxjs-52f7f9))*
