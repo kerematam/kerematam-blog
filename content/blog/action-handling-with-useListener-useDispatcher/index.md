@@ -5,7 +5,11 @@ image: "./mj-1.png"
 imageAlt: Cozy image that i've created with MJ.
 ---
 
-![Cozy image that i've created with MJ.](./mj-1.png)
+![A cozy image that is grabbed from Midjourney.](./mj-1.png)
+<i style="display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    color: var(--theme-ui-colors-muted);">A cozy image that is grabbed from Midjourney. Coz, why not?</i>
 
 React is known for its powerful tools to manage state and facilitate communication between components. However, sometimes, you might find yourself needing a more dynamic, event-driven approach that isn't well-supported out of the box. In these cases, you can leverage some of the flexible aspects of React to create a custom solution.
 

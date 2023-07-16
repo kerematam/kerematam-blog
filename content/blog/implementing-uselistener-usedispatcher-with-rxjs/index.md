@@ -4,7 +4,12 @@ date: 2023-07-02
 image: "./mj-2.png"
 imageAlt: Cozy image that I've taken from MJ.
 ---
-![Cozy image that i've created with MJ.](./mj-2.png)
+
+![A cozy image that is grabbed from Midjourney.](./mj-2.png)
+<i style="display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    color: var(--theme-ui-colors-muted);">A cozy image that is grabbed from Midjourney. Coz, why not?</i>
 
 As RxJS provides rich tooling for event-driven implementations, I've decided to give it a try by implementing the previous example of action handling hooks (`useListener` and `useDispatcher`):
 
@@ -77,4 +82,4 @@ const AComponentNestedDeepInDomTree = () => {
 }
 ```
 
-*([Try it on Sandbox](https://codesandbox.io/s/uselistener-usedispatch-with-rxjs-52f7f9))*
+_([Try it on Sandbox](https://codesandbox.io/s/uselistener-usedispatch-with-rxjs-52f7f9))_

@@ -5,7 +5,11 @@ image: ./cat-in-cemetery.png
 imageAlt: A beach at sunset with crashing waves.
 ---
 
-![Cozy image that i've created with MJ.](./cat-in-cemetery.png)
+![A cozy image that is grabbed from Midjourney.](./cat-in-cemetery.png "asd")
+<i style="display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    color: var(--theme-ui-colors-muted);">A cozy image that is grabbed from Midjourney. Coz, why not?</i>
 
 This is my developer story with Gatsby (after I had used it few years before).
 
@@ -36,8 +40,6 @@ Gatsby's official documentation suggests you use an outdated [theme](https://www
 The previous problem cost me hours of work until I realized it. Well, red flags were everywhere, but I was too blind to see them. So, instead of going with `gatsby-theme-blog`, I cloned the Gatsby [Starter Blog Boilerplate](https://github.com/gatsbyjs/gatsby-starter-blog). It wasn't outdated, but it didn't have the MDX feature out of the box. This was even more painful as I had spent some time on styling the highlighting lines of the code snippet on previous themed approach.
 
 ## What was good?
-* Throughout my development journey, one thing was consistently excellent - the deployment process was super easy and free!
-* It's also important to note that despite the difficulties I faced, using Gatsby was still faster than other options within my knowledge scope. Building something similar from scratch would have taken significantly more time.
 
-
-
+- Throughout my development journey, one thing was consistently excellent - the deployment process was super easy and free!
+- It's also important to note that despite the difficulties I faced, using Gatsby was still faster than other options within my knowledge scope. Building something similar from scratch would have taken significantly more time.
