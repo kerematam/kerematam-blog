@@ -5,11 +5,12 @@ image: "./mj-1.png"
 imageAlt: Cozy image that i've created with MJ.
 ---
 
-![A cozy image that is grabbed from Midjourney.](./mj-1.png)
-<i style="display: flex;
-    justify-content: flex-end;
-    font-size: 12px;
-    color: var(--theme-ui-colors-muted);">A cozy image that is grabbed from Midjourney. Coz, why not?</i>
+<figure style="margin: 0; margin-bottom: 32px;">
+  <img src="./mj-1.png" alt="A cozy image from Midjourney" title="A cozy image from Midjourney" >
+    <figcaption>
+      <i style="display: flex; justify-content: flex-end; font-size: 12px; color: var(--theme-ui-colors-muted);">A cozy image from Midjourney.</i>
+    </figcaption>
+</figure>
 
 React is known for its powerful tools to manage state and facilitate communication between components. However, sometimes, you might find yourself needing a more dynamic, event-driven approach that isn't well-supported out of the box. In these cases, you can leverage some of the flexible aspects of React to create a custom solution.
 
@@ -114,7 +115,7 @@ export const createComponentAction = () => {
 
 so when you need to use, wrap the roof component with `withAction` HOC.
 
-*([Try it on Sandbox](https://codesandbox.io/s/uselistener-usedispatch-kfqtdf))*
+_([Try it on Sandbox](https://codesandbox.io/s/uselistener-usedispatch-kfqtdf))_
 
 ### When to Use
 

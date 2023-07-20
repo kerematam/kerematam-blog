@@ -5,13 +5,14 @@ image: "./mj-2.png"
 imageAlt: Cozy image that I've taken from MJ.
 ---
 
-![A cozy image that is grabbed from Midjourney.](./mj-2.png)
-<i style="display: flex;
-    justify-content: flex-end;
-    font-size: 12px;
-    color: var(--theme-ui-colors-muted);">A cozy image that is grabbed from Midjourney. Coz, why not?</i>
+<figure style="margin: 0; margin-bottom: 32px;">
+  <img src="./mj-2.png" alt="A cozy image from Midjourney" title="A cozy image from Midjourney" >
+    <figcaption>
+      <i style="display: flex; justify-content: flex-end; font-size: 12px; color: var(--theme-ui-colors-muted);">A cozy image from Midjourney.</i>
+    </figcaption>
+</figure>
 
-As RxJS provides rich tooling for event-driven implementations, I've decided to give it a try by implementing the previous example of action handling hooks (`useListener` and `useDispatcher`):
+As RxJS provides rich tooling for event-driven implementations, I've decided to give it a try by implementing the [previous example](/action-handling-with-useListener-useDispatcher) of action handling hooks (`useListener` and `useDispatcher`):
 
 ```jsx
 export const createAction = () => {
