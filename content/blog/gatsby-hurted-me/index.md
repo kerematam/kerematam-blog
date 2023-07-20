@@ -5,11 +5,12 @@ image: ./cat-in-cemetery.png
 imageAlt: A beach at sunset with crashing waves.
 ---
 
-![A cozy image that is grabbed from Midjourney.](./cat-in-cemetery.png "asd")
-<i style="display: flex;
-    justify-content: flex-end;
-    font-size: 12px;
-    color: var(--theme-ui-colors-muted);">A cozy image that is grabbed from Midjourney. Coz, why not?</i>
+<figure style="margin: 0; margin-bottom: 32px;">
+  <img src="./cat-in-cemetery.png" alt="A cozy image from Midjourney" title="A cozy image from Midjourney" >
+    <figcaption>
+      <i style="display: flex; justify-content: flex-end; font-size: 12px; color: var(--theme-ui-colors-muted);">A cozy image from Midjourney.</i>
+    </figcaption>
+</figure>
 
 This is my developer story with Gatsby (after I had used it few years before).
 
