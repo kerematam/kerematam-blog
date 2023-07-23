@@ -25,13 +25,16 @@ Here how you may do it.
 Use base64 encoding instead of only relying on `JSON.stringfy`.
 
 ```js
+// Control the size of encoded string, do not set 
+// if too long
 const encodeState = state => {
   const jsonString = JSON.stringify(state)
   return Buffer.from(jsonString).toString("base64")
 }
 
 const decodeState = state => {
-  // We can't trust if URL state is valid as it can be modified by a user.
+  // We can't trust if URL state is valid 
+  // as it can be modified by a user.
   try {
     const decodedString = Buffer.from(
       state,
@@ -45,7 +48,7 @@ const decodeState = state => {
 }
 ```
 
-Say, for instance, you have this kind of state defining expanded items in the UI::
+Say, for instance, you have this kind of state defining expanded items in the UI:
 
 ```json
 {
@@ -57,7 +60,7 @@ Say, for instance, you have this kind of state defining expanded items in the UI
 }
 ```
 
-Define harcoded initial state, and only store the difference. Eg. in below example, we know that rest of items that are not listed are `true`. I dont need to track them on my state.
+Define harcoded initial state, and only store the difference. In below example, we know that rest of items (that are not listed) are `true`. I dont need to track them on my state.
 
 ```json
 {
@@ -73,7 +76,10 @@ Define harcoded initial state, and only store the difference. Eg. in below examp
 Define state with rules. Eg. instead of listing ids of all expanded items, define how would item shown in certain states:
 
 ```js
-const isExpanded = state[id] ?? defaultStateThatOverridesExpandAll ?? expandAll
+const isExpanded =
+  state[id] ??
+  defaultStateThatOverridesExpandAll ??
+  expandAll
 ```
 
 Still not enough? Use indexes instead of ids and hope no data changes on the server.🤞🤦 If you choose to take this horrible approach, it's better to add a timestamp and avoid using the URL state after a certain timeout (like 30 seconds, etc.).
@@ -86,4 +92,5 @@ Still not enough? Use indexes instead of ids and hope no data changes on the ser
   "expire": 1690102973529
 }
 ```
+
 Good luck!
