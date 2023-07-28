@@ -14,7 +14,7 @@ imageAlt: Cozy image that i've created with MJ.
     </figcaption>
 </figure>
 
-Did you just hit the 2000 character limit while storing UI state on URL? and now are you trying to reduce the amount of state you're storing. Been there, done that. It was painful and I dont think you should do the same. This approach forces you to add additional complexity to your code and there's no guarantee it will work all the time.
+Storing a lot of state in a URL might seem handy, but keep in mind there's a 2000 character cap. Now, you could try trimming down the state you're storing to sidestep this limit. But trust me, it's not as easy as it sounds, at least to me. I've been down that road recently, and it wasn't a walk in the park. So, I'd suggest you think about other options (one is mentioned below), it might save you some headache!
 
 Instead, store the state on the server, generate a unique id for each state, and when the user navigates to that URL, retrieve the state from the server. This method will keep your URLs short and clean.
 
